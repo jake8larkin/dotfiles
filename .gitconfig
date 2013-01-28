@@ -1,0 +1,19 @@
+[user]
+	name = Jake Oktawiec
+	email = jake@strava.com
+[color]
+	diff = auto
+	status = auto
+	interactive = auto
+[core]
+	excludesfile = /Users/jake/.gitignore_global
+
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+[push]
+  default = upstream
