@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="alanpeabody"
+ZSH_THEME="jakeo"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -43,3 +43,4 @@ alias lsg="ls -a | grep"
 alias ls="ls -laG"
 alias active="cd /Users/jake/dev/strava/active"
 alias reporting="cd /Users/jake/dev/strava/reporting"
+alias deploydir="cd /Users/jake/dev/strava/deploy"
