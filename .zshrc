@@ -34,13 +34,14 @@ plugins=(git rails3 rake rvm ruby sublime rake thor vi-mode gem git brew osx)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/Users/jake/.rvm/gems/ruby-1.9.3-p194/bin:/Users/jake/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/jake/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/jake/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/jake/.rvm/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 alias h="history|grep"
 alias bundle="nocorrect bundle"
 alias lsg="ls -a | grep"
-alias ls="ls -laG"
-alias active="cd /Users/jake/dev/strava/active"
-alias reporting="cd /Users/jake/dev/strava/reporting"
-alias deploydir="cd /Users/jake/dev/strava/deploy"
+alias ls="ls -laG --color"
+alias active="cd ~/dev/strava/active"
+alias reporting="cd ~/dev/strava/reporting"
+alias deploydir="cd ~/dev/strava/deploy"
+
+alias fif="grep --color=always -rn -C 1"

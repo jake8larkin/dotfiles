@@ -46,3 +46,4 @@ zeus.json
 *.tags_sorted_by_file
 *spec/test_data/segments/*
 *spec/test_data/activities/*
+*.ruby-gemset

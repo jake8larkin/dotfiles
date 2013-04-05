@@ -6,7 +6,8 @@
 	status = auto
 	interactive = auto
 [core]
-	excludesfile = /Users/jake/.gitignore_global
+	excludesfile = ~/.gitignore_global
+  editor = vi
 
 [alias]
   st = status
@@ -15,5 +16,9 @@
   co = checkout
   df = diff
   lg = log -p
+  g = grep --break --heading --untracked --color=auto -p -1
 [push]
   default = upstream
+
+[grep]
+  lineNumber = true
