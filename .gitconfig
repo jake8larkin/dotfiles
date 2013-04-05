@@ -1,14 +1,13 @@
 [user]
-	name = Jake Oktawiec
-	email = jake@strava.com
+  name = Jake Oktawiec
+  email = blah
 [color]
-	diff = auto
-	status = auto
-	interactive = auto
+  diff = auto
+  status = auto
+  interactive = auto
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = vi
-
 [alias]
   st = status
   ci = commit

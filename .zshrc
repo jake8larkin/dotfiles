@@ -43,5 +43,4 @@ alias ls="ls -laG --color"
 alias active="cd ~/dev/strava/active"
 alias reporting="cd ~/dev/strava/reporting"
 alias deploydir="cd ~/dev/strava/deploy"
-
 alias fif="grep --color=always -rn -C 1"
