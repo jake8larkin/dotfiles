@@ -15,7 +15,7 @@ ZSH_THEME="jakeo"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -39,7 +39,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 alias h="history|grep"
 alias bundle="nocorrect bundle"
 alias lsg="ls -a | grep"
-alias ls="ls -laG --color"
+alias ls="ls -laG"
 alias active="cd ~/dev/strava/active"
 alias reporting="cd ~/dev/strava/reporting"
 alias deploydir="cd ~/dev/strava/deploy"

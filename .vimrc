@@ -13,7 +13,7 @@ set history=100
 set showcmd
 execute pathogen#infect()
 set shell=zsh
-set shellcmdflag=-ci
+"set shellcmdflag=-ci
 set list
 set listchars=tab:>-,trail:- " show tabs and trailing spaces
 set ignorecase " Make searches case insensitive.
@@ -27,3 +27,8 @@ set spelllang=en
 set clipboard=unnamed
 " make the paren highlighting less distracting, swap fg and bg colors
 highlight MatchParen ctermfg=208 ctermbg=16
+
+autocmd BufWritePre *.rb :%s/\s\+$//e
+
+set laststatus=2
+set shiftwidth=2
