@@ -1,9 +1,7 @@
 # Get the compile-dependencies of vim
 sudo apt-get build-dep vim
-# If you haven't got mercurial, get it
-sudo apt-get install mercurial
 # Get the source
-hg clone https://vim.googlecode.com/hg/ vim_source
+git clone git@github.com:b4winckler/vim.git vim_source
 # Compile it
 cd vim_source
 ./configure \
@@ -16,6 +14,6 @@ cd vim_source
     --enable-gnome-check \
     --with-features=huge \
     --with-x \
-    --with-compiledby="Your Name <youremail@domain.com>" \
+    --with-compiledby="Jake Oktawiec <jake.okt@gmail.com>" \
     --with-python-config-dir=/usr/lib/python2.7/config
 make && sudo make install

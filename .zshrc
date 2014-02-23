@@ -29,7 +29,7 @@ ZSH_THEME="jakeo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails3 rake rvm ruby sublime rake thor vi-mode gem git brew osx)
+plugins=(git rails rake rvm ruby sublime rake thor vi-mode gem git brew osx)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,3 +44,5 @@ alias active="cd ~/dev/strava/active"
 alias reporting="cd ~/dev/strava/reporting"
 alias deploydir="cd ~/dev/strava/deploy"
 alias fif="grep --color=always -rn -C 1"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
