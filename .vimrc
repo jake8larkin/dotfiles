@@ -14,7 +14,7 @@ set history=100
 set showcmd
 execute pathogen#infect()
 set shell=zsh
-set shellcmdflag=-ci
+"set shellcmdflag=-ci
 set list
 set listchars=tab:>-,trail:- " show tabs and trailing spaces
 set ignorecase " Make searches case insensitive.
@@ -32,3 +32,5 @@ highlight MatchParen ctermfg=208 ctermbg=16
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set backspace=indent,eol,start
 
+autocmd BufWritePre *.rb :%s/\s\+$//e
+set laststatus=2
