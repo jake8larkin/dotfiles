@@ -35,6 +35,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+#PATH=$PATH:$HOME/dev/play-2.2.3  # scala play framework
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 alias h="history|grep"
 alias bundle="nocorrect bundle"
@@ -44,5 +47,6 @@ alias active="cd ~/dev/strava/active"
 alias reporting="cd ~/dev/strava/reporting"
 alias deploydir="cd ~/dev/strava/deploy"
 alias fif="grep --color=always -rn -C 1"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+alias gg="git g"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"

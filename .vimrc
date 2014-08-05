@@ -21,7 +21,7 @@ set ignorecase " Make searches case insensitive.
 set smartcase " Make searches case-sensitive if they contain upper-case
 
 " Wildignore RBC and doc files
-set wildignore+=*.rbc,doc/*,*spec/cassettes/*,tags,*junit*
+set wildignore+=*.rbc,doc/*,*spec/cassettes/*,*tags*,*junit*,*target*
 " Set spelling region to English
 set spelllang=en
 " Use proper clipboard
@@ -32,5 +32,5 @@ highlight MatchParen ctermfg=208 ctermbg=16
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set backspace=indent,eol,start
 
-autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd FileType c,cpp,java,rb,thrift,scala autocmd BufWritePre <buffer> :%s/\s\+$//e 
 set laststatus=2
