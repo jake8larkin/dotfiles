@@ -47,3 +47,5 @@ zeus.json
 *spec/test_data/segments/*
 *spec/test_data/activities/*
 *.ruby-gemset
+*.swp
+*.swo

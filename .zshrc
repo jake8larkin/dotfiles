@@ -29,16 +29,13 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails rake rvm ruby sublime rake thor vi-mode gem git brew osx)
+plugins=(git rails rake ruby sublime rake thor vi-mode gem git brew osx)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #PATH=$PATH:$HOME/dev/play-2.2.3  # scala play framework
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 alias h="history|grep"
 alias bundle="nocorrect bundle"
 alias lsg="ls -a | grep"
@@ -50,3 +47,7 @@ alias fif="grep --color=always -rn -C 1"
 alias gg="git g"
 #export PATH="$HOME/.rbenv/bin:$PATH"
 #eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+source $HOME/.awsrc
