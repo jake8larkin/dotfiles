@@ -33,13 +33,12 @@ plugins=(git rails rake ruby sublime rake thor vi-mode gem git brew osx)
 
 source $ZSH/oh-my-zsh.sh
 
-
 #PATH=$PATH:$HOME/dev/play-2.2.3  # scala play framework
-
+PATH=$PATH:$HOME/bin
 alias h="history|grep"
 alias bundle="nocorrect bundle"
 alias lsg="ls -a | grep"
-alias ls="ls -laG"
+alias ls="ls -laGAF --color --group-directories-first"
 alias active="cd ~/dev/strava/active"
 alias reporting="cd ~/dev/strava/reporting"
 alias deploydir="cd ~/dev/strava/deploy"
@@ -47,8 +46,11 @@ alias fif="grep --color=always -rn -C 1"
 alias gg="git grep --break --heading --untracked --color=auto -p -1"
 alias tree="tree -C -I target"
 #export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 source $HOME/.awsrc
+
+#export PATH="$PATH:$HOME/dev/gradle-2.3/bin"
+bindkey "^R" history-incremental-pattern-search-backward
+#xset r rate 250 50
