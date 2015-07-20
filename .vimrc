@@ -6,7 +6,7 @@ set tags=tags;/
 set number " show line numbers
 set expandtab " expand tabs to spaces
 set tabstop=2 " tab = 2 speaces
-set shiftwidth=2
+set shiftwidth=2 "indent
 set hls is " highlight search, incremental search
 " set autoindent
 set ruler
@@ -34,6 +34,25 @@ set backspace=indent,eol,start
 
 autocmd FileType c,cpp,java,rb,ruby,thrift,scala autocmd BufWritePre <buffer> :%s/\s\+$//e 
 set laststatus=2
+
+"always show the filename
+set modeline
+set ls=2
+" syntax highlight *.thor files as ruby
+au BufRead,BufNewFile *.thor set filetype=ruby
+" auto trim trailing whitespace on save
+autocmd FileType c,cpp,java,php,coffee,js,ruby,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
+set backspace=indent,eol,start "fix for behavoir of backspace key
+
+" alias common slow-shift typos to intended commands :W => :w
+command WQ wq
+command Wq wq
+command BW bw
+command Bw bw
+command BP bp
+command Bp bp
+command W w
+command Q q
 
 " fix for scrolling and selection on Mac OSX 10.10.2
 set mouse=a

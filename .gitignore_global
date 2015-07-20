@@ -49,3 +49,12 @@ zeus.json
 *.ruby-gemset
 *.swp
 *.swo
+
+# Ruby
+zeus.json
+*.ruby-gemset
+*active/spec/test_data/segments/*
+*active/spec/test_data/activities/*
+
+# Scala/ Java
+target/
