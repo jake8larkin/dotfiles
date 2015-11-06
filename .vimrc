@@ -41,7 +41,7 @@ set ls=2
 " syntax highlight *.thor files as ruby
 au BufRead,BufNewFile *.thor set filetype=ruby
 " auto trim trailing whitespace on save
-autocmd FileType c,cpp,java,php,coffee,js,ruby,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,coffee,javascript,ruby,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
 set backspace=indent,eol,start "fix for behavoir of backspace key
 
 " alias common slow-shift typos to intended commands :W => :w
