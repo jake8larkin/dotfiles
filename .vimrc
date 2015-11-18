@@ -8,7 +8,7 @@ set expandtab " expand tabs to spaces
 set tabstop=2 " tab = 2 speaces
 set shiftwidth=2 "indent
 set hls is " highlight search, incremental search
-" set autoindent
+set autoindent
 set ruler
 set history=100
 set showcmd
@@ -28,14 +28,31 @@ set spelllang=en
 set clipboard=unnamed
 " make the paren highlighting less distracting, swap fg and bg colors
 highlight MatchParen ctermfg=208 ctermbg=16
-" enable ctrlp plugin
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 set backspace=indent,eol,start
 
 autocmd FileType c,cpp,java,rb,ruby,thrift,scala autocmd BufWritePre <buffer> :%s/\s\+$//e 
 set laststatus=2
 
-"always show the filename
+" statusline
+" cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+" format markers:
+"   %< truncation point
+"   %n buffer number
+"   %f relative path to file
+"   %m modified flag [+] (modified), [-] (unmodifiable) or nothing
+"   %r readonly flag [RO]
+"   %y filetype [ruby]
+"   %= split point for left and right justification
+"   %-35. width specification
+"   %l current line number
+"   %L number of lines in buffer
+"   %c current column number
+"   %V current virtual column number (-n), if different from %c
+"   %P percentage through buffer
+"   %) end of width specification
+set statusline=%<\ b%n\ \ \ %f\ \ \ %h%m%r%y\ \ \ line:%l\ tot:%L\ col:%c%V
+
+
 set modeline
 set ls=2
 " syntax highlight *.thor files as ruby
@@ -68,5 +85,50 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 100000
 let g:ctrlp_max_depth = 100
 " default mode to open CtrlP in
-let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlP'
 
+" fix for randome issue with writing to crontab via tmp files on OSX 10.10
+autocmd Filetype crontab setlocal nobackup nowritebackup
+
+" set indent on certain file types to 4
+autocmd FileType javascript,python set tabstop=4|set shiftwidth=4
+
+" syntastic
+set statusline+=\ \ %#warningmsg#
+set statusline+=\ \ %{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" always fill in the location list when syntastic runs
+let g:syntastic_always_populate_loc_list = 1
+" auto open/close the location list   0 none  1 auto open&close  2 auto close
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+" don't check on :wq in active mode
+let g:syntastic_check_on_wq = 0
+" enable ballons,  vim must be compiled with some balloons option
+let g:syntastic_enable_balloons = 0
+" Better :sign interface symbols
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
+
+"short command aliases
+command Sc SyntasticCheck
+command Sm SyntasticToggleMode
+command Si SyntasticInfo
+command Sr SyntasticReset
+
+let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+" end syntastic
+
+" set a light grey vertical line at max column width
+set colorcolumn=81
+
+" re-map Shift-Tab to de-tab  (outdent)
+  " normal mode
+  nnoremap <S-Tab> <<
+  "insert mode
+  inoremap <S-Tab> <C-d>
