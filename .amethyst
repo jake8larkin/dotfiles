@@ -1,0 +1,14 @@
+{
+  "layouts": [
+    "column",
+    "fullscreen",
+    "tall",
+    "row"
+  ],
+
+  "floating": [
+      "com.apple.systempreferences"
+  ],
+
+  "enables-layout-hud-on-space-change": false,
+}
