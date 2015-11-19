@@ -1,19 +1,30 @@
+set -eu
 
 # BEGIN OSX SPECIFIC
 
-# install command line tools w/o xcode
-xcode-select --install
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # install command line tools w/o xcode
+  xcode-select --install
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install coreutils
-brew install zsh
-brew install git
+  brew install coreutils
+  brew install zsh
+  brew install git
 
-# install a 'nice' version of vim
-brew install vim --override-system vim
+  # install a 'nice' version of vim
+  brew install vim --override-system vim
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # assumes debian-based, uses aptitude
+  sudo apt-get update
+  sudo apt-get upgrade
+  sudo apt-get install build-essential
+  sudo apt-get install git-core
+  # add other linux specfic as need arises
+else
+  # add error here
+fi
 
-# END OSX Specific
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
