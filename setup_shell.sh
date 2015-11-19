@@ -14,6 +14,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install git
   # install a nice new version of vim
   brew install vim --override-system vim
+  
+  brew install ctags
+  brew install tree
+  brew install watch
+  brew install wget
+  brew install ngrep
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   # assumes debian-based, uses aptitude
   sudo apt-get update
