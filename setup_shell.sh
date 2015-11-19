@@ -1,8 +1,8 @@
 set -eu
 
-# BEGIN OSX SPECIFIC
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  # OSX specific installation
+  
   # install command line tools w/o xcode
   xcode-select --install
 
