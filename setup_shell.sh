@@ -20,6 +20,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   brew install watch
   brew install wget
   brew install ngrep
+  
+  # install brew-cask
+  brew install caskroom/cask/brew-cask
+  # install amethys and get my .amethyst config
+  brew cask install amethyst
+  curl -fsSSL https://raw.githubusercontent.com/jake8larkin/dotfiles/master/.amethyst > ~/.amethyst
+  
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
   # assumes debian-based, uses aptitude
   sudo apt-get update
