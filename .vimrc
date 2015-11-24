@@ -50,7 +50,7 @@ set laststatus=2
 "   %V current virtual column number (-n), if different from %c
 "   %P percentage through buffer
 "   %) end of width specification
-set statusline=%<\ b%n\ \ \ %f\ \ \ %h%m%r%y\ \ \ line:%l\ tot:%L\ col:%c%V
+set statusline=%<\ b%n\ \ \ %f\ \ \ %h%m%r%y\ \ \ line:%l\ of\ %L\ col:%c%V
 
 
 set modeline
@@ -76,7 +76,7 @@ set mouse=a
 
 " ctrlp vim plug in override options
 " use find for building file index instead of vim globbing (buggy in OSX)
-let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = 'find %s -type f | grep -v node_modules'
 " increase the default max size of results
 let g:ctrlp_match_window = 'max:35'
 " enable cross session caching
@@ -86,12 +86,12 @@ let g:ctrlp_max_files = 100000
 let g:ctrlp_max_depth = 100
 " default mode to open CtrlP in
 let g:ctrlp_cmd = 'CtrlP'
-
 " fix for randome issue with writing to crontab via tmp files on OSX 10.10
 autocmd Filetype crontab setlocal nobackup nowritebackup
 
 " set indent on certain file types to 4
-autocmd FileType javascript,python set tabstop=4|set shiftwidth=4
+autocmd FileType javascript,python,json set tabstop=4|set shiftwidth=4
+autocmd BufRead,BufNewFile *.json set tabstop=4|set shiftwidth=4
 
 " syntastic
 set statusline+=\ \ %#warningmsg#
@@ -102,13 +102,13 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 " auto open/close the location list   0 none  1 auto open&close  2 auto close
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 " don't check on :wq in active mode
 let g:syntastic_check_on_wq = 0
 " enable ballons,  vim must be compiled with some balloons option
 let g:syntastic_enable_balloons = 0
 " Better :sign interface symbols
-let g:syntastic_error_symbol = '✗'
+let g:syntastic_error_symbol = 'âœ—'
 let g:syntastic_warning_symbol = '!'
 
 "short command aliases
@@ -117,11 +117,15 @@ command Sm SyntasticToggleMode
 command Si SyntasticInfo
 command Sr SyntasticReset
 
-let g:syntastic_javascript_checkers = ["eslint"]
+let g:syntastic_javascript_checkers = ["standard"]
 let g:syntastic_mode_map = {
-  \ "mode": "passive",
+  \ "mode": "active",
   \ "active_filetypes": [],
   \ "passive_filetypes": [] }
+
+let g:syntastic_quiet_messages = {
+      \ "regex":   '.*Rule.*was removed and replaced by.*' }
+
 " end syntastic
 
 " set a light grey vertical line at max column width
