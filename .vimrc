@@ -108,7 +108,7 @@ let g:syntastic_check_on_wq = 0
 " enable ballons,  vim must be compiled with some balloons option
 let g:syntastic_enable_balloons = 0
 " Better :sign interface symbols
-let g:syntastic_error_symbol = 'âœ—'
+let g:syntastic_error_symbol = 'x'
 let g:syntastic_warning_symbol = '!'
 
 "short command aliases
