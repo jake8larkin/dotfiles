@@ -16,7 +16,11 @@ execute pathogen#infect()
 set shell=zsh
 "set shellcmdflag=-ci
 set list
+
 set listchars=tab:>-,trail:- " show tabs and trailing spaces
+"set listchars=trail:- " show tabs and trailing spaces
+"autocmd FileType go set listchars-=tab:>-  " dont show tabs for golang
+
 set ignorecase " Make searches case insensitive.
 set smartcase " Make searches case-sensitive if they contain upper-case
 
@@ -30,8 +34,8 @@ set clipboard=unnamed
 highlight MatchParen ctermfg=208 ctermbg=16
 set backspace=indent,eol,start
 
-autocmd FileType c,cpp,java,rb,ruby,thrift,scala autocmd BufWritePre <buffer> :%s/\s\+$//e 
 set laststatus=2
+
 
 " statusline
 " cf the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
@@ -52,13 +56,15 @@ set laststatus=2
 "   %) end of width specification
 set statusline=%<\ b%n\ \ \ %f\ \ \ %h%m%r%y\ \ \ line:%l\ of\ %L\ col:%c%V
 
+" jj in insert mode will switch back to normal 
+:inoremap jj <Esc>
 
 set modeline
 set ls=2
 " syntax highlight *.thor files as ruby
 au BufRead,BufNewFile *.thor set filetype=ruby
 " auto trim trailing whitespace on save
-autocmd FileType c,cpp,java,php,coffee,javascript,ruby,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,coffee,javascript,ruby,scala,go autocmd BufWritePre <buffer> :%s/\s\+$//e
 set backspace=indent,eol,start "fix for behavoir of backspace key
 
 " alias common slow-shift typos to intended commands :W => :w
@@ -74,9 +80,13 @@ command Q q
 " fix for scrolling and selection on Mac OSX 10.10.2
 set mouse=a
 
+" allows h,l to wrap to next line when it reaches beginning or EOL
+set whichwrap+=<,>,h,l
+
+
 " ctrlp vim plug in override options
 " use find for building file index instead of vim globbing (buggy in OSX)
-let g:ctrlp_user_command = 'find %s -type f | grep -v node_modules'
+let g:ctrlp_user_command = 'find %s -type f -not \( -path "*/.git/*" -prune \)  -not \( -path "*node_modules*" -prune \) -not \( -path "*coverage*" -prune \)'
 " increase the default max size of results
 let g:ctrlp_match_window = 'max:35'
 " enable cross session caching
@@ -92,6 +102,8 @@ autocmd Filetype crontab setlocal nobackup nowritebackup
 " set indent on certain file types to 4
 autocmd FileType javascript,python,json set tabstop=4|set shiftwidth=4
 autocmd BufRead,BufNewFile *.json set tabstop=4|set shiftwidth=4
+" go uses 8
+autocmd FileType go set tabstop=4|set shiftwidth=4|set noexpandtab|set nolist
 
 " syntastic
 set statusline+=\ \ %#warningmsg#
@@ -136,3 +148,19 @@ set colorcolumn=81
   nnoremap <S-Tab> <<
   "insert mode
   inoremap <S-Tab> <C-d>
+
+
+
+" YouCompleteMe
+""
+""set nocompatible
+""filetype off
+""
+""set rtp+=~/.vim/bundle/vundle
+""call vundel#rc()
+""
+""Bundle 'gmarik/vundle'
+""
+""Bundle 'Valloric/YouCompleteMe'
+""Bundle 'Valloric/ListToggle'
+""Bundle 'scrooloose/syntastic'
