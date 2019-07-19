@@ -11,11 +11,13 @@
 [alias]
   st = status
   ci = commit
-  br = branch
+  #br = branch
   co = checkout
   df = diff
   lg = log -p
   g = grep --break --heading --untracked --color=auto -p -1
+  br = !git for-each-ref --sort='-authordate' --format='%(authordate)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'
+
 [push]
   default = upstream
 
