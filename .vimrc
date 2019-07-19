@@ -61,10 +61,14 @@ set statusline=%<\ b%n\ \ \ %f\ \ \ %h%m%r%y\ \ \ line:%l\ of\ %L\ col:%c%V
 
 set modeline
 set ls=2
+
 " syntax highlight *.thor files as ruby
 au BufRead,BufNewFile *.thor set filetype=ruby
+
 " auto trim trailing whitespace on save
-autocmd FileType c,cpp,java,php,coffee,javascript,ruby,scala,go autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,coffee,javascript,ruby,scala,go,python autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+"fix behavior of backspace key
 set backspace=indent,eol,start "fix for behavoir of backspace key
 
 " alias common slow-shift typos to intended commands :W => :w
@@ -84,9 +88,11 @@ set mouse=a
 set whichwrap+=<,>,h,l
 
 
-" ctrlp vim plug in override options
-" use find for building file index instead of vim globbing (buggy in OSX)
-let g:ctrlp_user_command = 'find %s -type f -not \( -path "*/.git/*" -prune \)  -not \( -path "*node_modules*" -prune \) -not \( -path "*coverage*" -prune \)'
+" CtrlP  VIM plugin  options
+
+" use find for building file index instead of vim globbing (buggy in OSX), rm common build dirs
+let g:ctrlp_user_command = 'find %s -type f -not \( -path "*/.git/*" -prune \)  -not \( -path "*node_modules*" -prune \) -not \( -path "*coverage*" -prune \) -not \( -path "*env*" -prune \) -not \( -path "*.gen/*" -prune \) -not \( -path "*tmp/*" -prune \) -not \( -path "*build/*" -prune \) -not \( -path "*Godeps*" -prune \) -not \( -path "*vendor/*" -prune \)'
+
 " increase the default max size of results
 let g:ctrlp_match_window = 'max:35'
 " enable cross session caching
@@ -96,7 +102,10 @@ let g:ctrlp_max_files = 100000
 let g:ctrlp_max_depth = 100
 " default mode to open CtrlP in
 let g:ctrlp_cmd = 'CtrlP'
-" fix for randome issue with writing to crontab via tmp files on OSX 10.10
+
+
+
+" fix for random issue with writing to crontab via tmp files on OSX 10.10
 autocmd Filetype crontab setlocal nobackup nowritebackup
 
 " set indent on certain file types to 4
@@ -164,3 +173,7 @@ set colorcolumn=81
 ""Bundle 'Valloric/YouCompleteMe'
 ""Bundle 'Valloric/ListToggle'
 ""Bundle 'scrooloose/syntastic'
+
+call plug#begin()
+Plug 'fatih/vim-go'
+call plug#end()
