@@ -1,3 +1,6 @@
+EDITOR=vim
+VISUAL=vim
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -49,3 +52,25 @@ source $HOME/.awsrc
 #export PATH="$PATH:$HOME/dev/gradle-2.3/bin"
 bindkey "^R" history-incremental-pattern-search-backward
 #xset r rate 250 50
+
+# zsh  zle  vi mode
+bindkey -v
+
+mkdircd ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
+
+## golang
+export GOPATH="/Users/jake/swd/go"
+export PATH="$PATH:$GOPATH/bin"
+
+path=($HOME/bin /usr/local/sbin /usr/local/bin $path)
+
+# various homebrew openssl installation recommendations
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
