@@ -1,55 +1,53 @@
-EDITOR=vim
-VISUAL=vim
+export VISUAL=vim
+export EDITOR=vim
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# ZSH configuration
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="jakeo"
+# add custom zsh function path, contains my functions
+fpath=( "$HOME/.zprompts/" $fpath )
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# parameter expansion, command substitution and arithmetic expansion are performed in prompts
+setopt promptsubst
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+# functions to get git status in a directory
+source ~/.zprompts/git.zsh
 
-# Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+# load colors zshr plugin
+autoload -U colors && colors
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+# zsh completion and prompt plugsin
+autoload -Uz compinit promptinit
+compinit
+promptinit
+prompt jake
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Enable ls colors
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+# enable highlight completion selection
+zstyle ':completion:*' menu select
+setopt COMPLETE_ALIASES
 
-source $ZSH/oh-my-zsh.sh
+# enable history
+export HISTSIZE=10000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
 
-#PATH=$PATH:$HOME/dev/play-2.2.3  # scala play framework
-PATH=$PATH:$HOME/bin
-alias higr="history | grep"
-alias bundle="nocorrect bundle"
-alias lsg="ls -a | grep"
-alias ls="ls -laGAF --color --group-directories-first"
-alias fif="grep --color=always -rn -C 1"
+# automatically do cd if a directory is called
+setopt autocd
+# regex style globing
+setopt extendedglob
+# autocorrection of commands
+#setopt correctall
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export GOPATH=$HOME/swd/go
+alias ls='ls -Glah'
 alias gg="git grep --break --heading --untracked --color=auto -p -1"
-alias tree="tree -C -I target"
-#export PATH="$HOME/.rbenv/bin:$PATH"
+alias higr="history | grep"
 
-source $HOME/.awsrc
 
-#export PATH="$PATH:$HOME/dev/gradle-2.3/bin"
 bindkey "^R" history-incremental-pattern-search-backward
 #xset r rate 250 50
 
@@ -66,11 +64,9 @@ mkdircd ()
 export GOPATH="/Users/jake/swd/go"
 export PATH="$PATH:$GOPATH/bin"
 
-path=($HOME/bin /usr/local/sbin /usr/local/bin $path)
-
 # various homebrew openssl installation recommendations
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/openssl/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
