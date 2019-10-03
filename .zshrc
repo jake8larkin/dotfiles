@@ -33,6 +33,12 @@ setopt COMPLETE_ALIASES
 export HISTSIZE=10000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
+# zsh history only output 15 entries by default.  history N   lists all the entries since N
+#  see https://stackoverflow.com/questions/26846738/zsh-history-is-too-short
+alias history="history 1"   
 
 # automatically do cd if a directory is called
 setopt autocd
